@@ -77,24 +77,27 @@ It is expected that your predicted model and reference chains are organized as s
   - reference chain B = target
 
 RMSD interpretation: target_orientation_rmsd_A
-    The target chain is structurally aligned with Biopython's Combinatorial
-    Extension (CE) algorithm ONLY to determine which target residues are
-    structurally equivalent. The CE target superposition is not used for the
-    reported orientation RMSD. Instead, the predicted binder is aligned onto
-    the reference binder, that binder-derived transform is applied to the
-    predicted target, and RMSD is measured over the CE-derived target residue
-    pairs. This makes the primary RMSD sensitive to complex orientation while
-    remaining robust to low target sequence identity.
+    
+The target chain is structurally aligned with Biopython's Combinatorial
+Extension (CE) algorithm ONLY to determine which target residues are
+structurally equivalent. The CE target superposition is not used for the
+reported orientation RMSD. Instead, the predicted binder is aligned onto
+the reference binder, that binder-derived transform is applied to the
+predicted target, and RMSD is measured over the CE-derived target residue
+pairs. This makes the primary RMSD sensitive to complex orientation while
+remaining robust to low target sequence identity.
 
 Diagnostic RMSD: target_stucture_fit_rmsd_A
-  This is the target-only best-fit RMSD over the CE-derived target residue pairs.
-  It is a diagnostic for intrinsic target structural similarity
+  
+This is the target-only best-fit RMSD over the CE-derived target residue pairs.
+It is a diagnostic for intrinsic target structural similarity
 
-  Useful interpretation:
-  Low target_structure_fit_rmsd_A + low target_orientation_rmsd_A
+Useful interpretations for RMSD results:
+  
+Low target_structure_fit_rmsd_A + low target_orientation_rmsd_A
     -> similar target fold and similar complex orientation
 
-  Low target_structure_fit_rmsd_A + high target_orientation_rmsd_A
+Low target_structure_fit_rmsd_A + high target_orientation_rmsd_A
     -> similar target fold but different target placement/orientation
 
 Both target_orientation_rmsd_A and target_structure_fit_rmsd_A are reported in `target_group_summary.tsv`. target_orientation_rmsd_A is the RMSD value used for plotting and recording in the global ranking table.
